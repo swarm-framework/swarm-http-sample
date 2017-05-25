@@ -1,15 +1,50 @@
+if(EXISTS ${PROJECT_SOURCE_DIR}/Dependencies/cxx-log/CMakeLists.txt)
 
-# Enable ExternalProject CMake module
-include(ExternalProject)
+    # Include cxx-log
+    add_subdirectory(${PROJECT_SOURCE_DIR}/Dependencies/cxx-log)
 
-# swarm-http-fcgi version
-set(swarm-http-fcgi-VERSION master)
+    # Include sources
+    include_directories(${PROJECT_SOURCE_DIR}/Dependencies/cxx-log/Sources)
 
-# Download and install murmuration-core
-ExternalProject_Add(
-    swarm-http-fcgi
-    PREFIX ${CMAKE_CURRENT_BINARY_DIR}/Dependencies/volatile
-    GIT_REPOSITORY git@github.com:swarm-framework/swarm-http-fcgi.git
-    GIT_TAG "${swarm-http-fcgi-VERSION}"
-    INSTALL_COMMAND ""
-)
+endif()
+
+if(EXISTS ${PROJECT_SOURCE_DIR}/Dependencies/swarm-commons/CMakeLists.txt)
+
+    # Include swarm-commons
+    add_subdirectory(${PROJECT_SOURCE_DIR}/Dependencies/swarm-commons)
+
+    # Include sources
+    include_directories(${PROJECT_SOURCE_DIR}/Dependencies/swarm-commons/Sources)
+
+endif()
+
+if(EXISTS ${PROJECT_SOURCE_DIR}/Dependencies/swarm-http-api/CMakeLists.txt)
+
+    # Include swarm-http-api
+    add_subdirectory(${PROJECT_SOURCE_DIR}/Dependencies/swarm-http-api)
+
+    # Include sources
+    include_directories(${PROJECT_SOURCE_DIR}/Dependencies/swarm-http-api/Sources)
+
+endif()
+
+if(EXISTS ${PROJECT_SOURCE_DIR}/Dependencies/swarm-http-server/CMakeLists.txt)
+
+    # Include swarm-http-server
+    add_subdirectory(${PROJECT_SOURCE_DIR}/Dependencies/swarm-http-server)
+
+    # Include sources
+    include_directories(${PROJECT_SOURCE_DIR}/Dependencies/swarm-http-server/Sources)
+
+endif()
+
+if(EXISTS ${PROJECT_SOURCE_DIR}/Dependencies/swarm-http-fcgi/CMakeLists.txt)
+
+    # Include swarm-http-fcgi
+    add_subdirectory(${PROJECT_SOURCE_DIR}/Dependencies/swarm-http-fcgi)
+
+    # Include sources
+    include_directories(${PROJECT_SOURCE_DIR}/Dependencies/swarm-http-fcgi/Sources)
+
+endif()
+
