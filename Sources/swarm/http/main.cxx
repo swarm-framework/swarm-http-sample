@@ -15,9 +15,16 @@
  *
  */
 
-#include "swarm/http/fcgi/FastCGIServerDelegate.hxx"
+#include "process/RequestInfoProcess.hxx"
+#include <swarm/http/fcgi/FastCGIServerDelegate.hxx>
+#include <swarm/http/message/request/HTTPMethod.hxx>
 #include <swarm/http/server/HTTPServer.hxx>
 #include <swarm/http/router/HTTPRouter.hxx>
+#include <swarm/http/router/HTTPRouterBuilder.hxx>
+
+using namespace swarm::http;
+
+#define DEBUG true
 
 int main(int arc, char *argv[]) {
     
@@ -25,8 +32,17 @@ int main(int arc, char *argv[]) {
     
     logger.log(cxxlog::Level::INFO, "Create router");
     
+    // Create process
+    std::shared_ptr<HTTPProcess> infoProcess = std::make_shared<RequestInfoProcess>();
+    
+    // Create router builder
+    HTTPRouterBuilder routerBuilder{};
+    
+    // Add process for info sub path
+    routerBuilder.add(HTTPMethod::GET, "/info/*", infoProcess);
+    
     // Router
-    std::shared_ptr<swarm::http::HTTPRouter> router;
+    std::shared_ptr<swarm::http::HTTPRouter> router = routerBuilder.build();
     
     logger.log(cxxlog::Level::INFO, "Create delegate");
     

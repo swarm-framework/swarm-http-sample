@@ -2,6 +2,7 @@
 # Add sources files
 set (${PROJECT_NAME}_SOURCES
     swarm/http/main.cxx
+    swarm/http/process/RequestInfoProcess.cxx swarm/http/process/RequestInfoProcess.hxx
 )
 
 

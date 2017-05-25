@@ -38,3 +38,5 @@ Dependencies/volatile/**/*
 
 # CLion
 .idea
+cmake-build-debug
+
