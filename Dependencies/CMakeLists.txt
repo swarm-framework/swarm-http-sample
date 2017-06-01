@@ -28,6 +28,17 @@ if(EXISTS ${PROJECT_SOURCE_DIR}/Dependencies/swarm-http-api/CMakeLists.txt)
 
 endif()
 
+
+if(EXISTS ${PROJECT_SOURCE_DIR}/Dependencies/swarm-mapping/CMakeLists.txt)
+
+    # Include swarm-mapping
+    add_subdirectory(${PROJECT_SOURCE_DIR}/Dependencies/swarm-mapping)
+
+    # Include sources
+    include_directories(${PROJECT_SOURCE_DIR}/Dependencies/swarm-mapping/Sources)
+
+endif()
+
 if(EXISTS ${PROJECT_SOURCE_DIR}/Dependencies/swarm-http-server/CMakeLists.txt)
 
     # Include swarm-http-server
