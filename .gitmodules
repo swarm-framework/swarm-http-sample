@@ -13,3 +13,6 @@
 [submodule "Dependencies/swarm-http-fcgi"]
 	path = Dependencies/swarm-http-fcgi
 	url = https://github.com/swarm-framework/swarm-http-fcgi.git
+[submodule "Dependencies/swarm-mapping"]
+	path = Dependencies/swarm-mapping
+	url = https://github.com/swarm-framework/swarm-mapping.git

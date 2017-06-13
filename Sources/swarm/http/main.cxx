@@ -16,6 +16,7 @@
  */
 
 #include "process/RequestInfoProcess.hxx"
+#include "swarm/http/service/HTTPServiceBuilder.hxx"
 #include <swarm/http/fcgi/FastCGIServerDelegate.hxx>
 #include <swarm/http/message/request/HTTPMethod.hxx>
 #include <swarm/http/server/HTTPServer.hxx>
@@ -40,6 +41,13 @@ int main(int arc, char *argv[]) {
     
     // Add process for info sub path
     routerBuilder.add(HTTPMethod::GET, "/info/*", infoProcess);
+    
+    // Add simple log service
+    routerBuilder.add(
+        HTTPServiceBuilder{}.service<void>(HTTPMethod::GET, "/ws/log").handler([](){
+            LOGGER(LOG_SERVICE).log(cxxlog::INFO, "Log '/ws/log' access");
+        })
+    );
     
     // Router
     std::shared_ptr<swarm::http::HTTPRouter> router = routerBuilder.build();
