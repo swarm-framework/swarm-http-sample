@@ -40,3 +40,4 @@ Dependencies/volatile/**/*
 .idea
 cmake-build-debug
 
+build-report
